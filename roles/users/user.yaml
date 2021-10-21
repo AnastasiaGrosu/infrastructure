@@ -1,0 +1,15 @@
+--- # Connection
+# ansible-playbook user.yaml
+- name: Create AWS IAM users
+  hosts: localhost
+  become: true
+  become_method: sudo
+  user: ec2-user
+  tasks:
+  - name: Add users
+    ansible.builtin.user:
+      name: "{{ item }}"
+      state: present
+    with_items:
+    john 
+    alice
