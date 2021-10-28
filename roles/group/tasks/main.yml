@@ -1,0 +1,16 @@
+---
+# Connection
+- name: Create  IAM group
+  hosts: localhost
+  become: true
+  become_method: sudo
+  user: ec2-user
+  tasks:
+ - name: Create IAM group
+  ansible.builtin.group:
+      name: "{{ item }}"
+      state: present
+   with_items:
+    - somegroup
+    - engineers
+    - IT
